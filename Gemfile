@@ -63,5 +63,6 @@ group :development, :test do
   gem 'email_spec'
   gem 'spring-commands-rspec'
   gem 'spring-commands-teaspoon'
+  gem 'rspec-collection_matchers'
 end
 

@@ -170,6 +170,8 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    rspec-collection_matchers (1.0.0)
+      rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.0.3)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.3)
@@ -295,6 +297,7 @@ DEPENDENCIES
   pry-stack_explorer
   quiet_assets
   rails (= 4.1.4)
+  rspec-collection_matchers
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
