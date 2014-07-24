@@ -34,6 +34,7 @@ gem 'devise'
 gem 'money-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'bootstrap-datepicker-rails'
 
 
 group :development do
