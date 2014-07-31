@@ -1,0 +1,31 @@
+h1 Listing events
+
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th Description
+      th Performance time
+      th Capacity
+      th Unsold Tickets
+      th Actions
+      th
+
+  tbody
+    - @events.each do |event|
+      tr{id = dom_id(event)}
+        td.name = event.name
+        td.description = event.description
+        td.performance_time = event.performance_time.to_s(:long)
+        td.capacity = event.capacity
+        td.unsold_ticket_count = event.unsold_ticket_count
+        td
+          = link_to 'Show', event
+          | |
+          = link_to 'Edit', edit_event_path(event)
+          | |
+          = link_to 'Destroy', event, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Event', new_event_path
