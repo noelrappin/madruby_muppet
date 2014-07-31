@@ -16,24 +16,9 @@ class Event < ActiveRecord::Base
   has_many :users, through: :tickets
 
   validates :capacity, numericality: {greater_than: 0}
-  delegate :past?, to: :performance_time
 
-  Ticket::STATUS.each do |status|
-    define_method :"#{status}_tickets" do
-      tickets.send(status.to_sym)
-    end
-
-    define_method :"#{status}_ticket_count" do
-      tickets.send(status.to_sym).count
-    end
-  end
-
-  def sold_out?
-    sold_ticket_count >= capacity
-  end
-
-  def on_hold?
-    sold_ticket_count + cart_ticket_count >= capacity
+  def unsold_tickets
+    tickets.unsold
   end
 
 end

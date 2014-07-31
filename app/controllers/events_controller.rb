@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @checker = ChecksForTickets.new(@event)
+    # @checker = ChecksForTickets.new(@event)
   end
 
   # GET /events/new

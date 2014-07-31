@@ -1,8 +1,8 @@
 require "rails_helper"
 
-feature "adding an event" do
+RSpec.describe "adding an event" do
 
-  scenario "creates new ticket objects" do
+  it "creates new ticket objects" do
     visit new_event_path
     fill_in "Name", with: "A New Event"
     fill_in "Capacity", with: 2

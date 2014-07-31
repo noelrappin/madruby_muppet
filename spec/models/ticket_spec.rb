@@ -31,7 +31,6 @@ RSpec.describe Ticket, :type => :model do
       sold.unsold!
       expect(sold).to be_unsold
     end
-
   end
 
 end
