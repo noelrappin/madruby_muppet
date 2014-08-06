@@ -25,5 +25,12 @@ RSpec.describe ChecksForTickets do
       expect(checker.reason).to eq(:past_event)
     end
 
+    it "doesn't count cart tickets as available" do
+      event.tickets.unsold.take(1).each { |t| t.sold! }
+      event.tickets.unsold.take(1).each { |t| t.cart! }
+      expect(checker).not_to be_available
+      expect(checker.reason).to eq :on_hold
+    end
+
   end
 end
