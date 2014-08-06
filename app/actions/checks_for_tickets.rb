@@ -7,7 +7,7 @@ class ChecksForTickets
   end
 
   def available_tickets
-    event.tickets.unsold.count
+    event.unsold_ticket_count
   end
 
   def available?
@@ -15,11 +15,11 @@ class ChecksForTickets
   end
 
   def all_tickets_sold?
-    event.tickets.sold.count >= event.capacity
+    event.sold_ticket_count >= event.capacity
   end
 
   def all_tickets_accounted_for?
-    event.tickets.sold.count + event.tickets.cart.count >= event.capacity
+    event.sold_ticket_count + event.cart_ticket_count >= event.capacity
   end
 
   def reason

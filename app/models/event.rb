@@ -19,8 +19,14 @@ class Event < ActiveRecord::Base
 
   delegate :past?, to: :performance_time
 
-  def unsold_tickets
-    tickets.unsold
+  Ticket::STATUS.each do |status_string|
+    define_method :"#{status_string}_tickets" do
+      tickets.send(status_string)
+    end
+
+    define_method :"#{status_string}_ticket_count" do
+      tickets.send(status_string).count
+    end
   end
 
 end
