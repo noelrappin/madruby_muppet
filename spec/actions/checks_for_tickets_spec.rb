@@ -18,5 +18,12 @@ RSpec.describe ChecksForTickets do
       expect(checker).not_to be_available
       expect(checker.reason).to eq :sold_out
     end
+
+    it "does not show old events as available" do
+      event.performance_time = 1.month.ago
+      expect(checker).not_to be_available
+      expect(checker.reason).to eq(:past_event)
+    end
+
   end
 end

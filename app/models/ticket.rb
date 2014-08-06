@@ -13,7 +13,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
 
-  STATUS = %w(unsold sold)
+  STATUS = %w(unsold sold cart)
 
   STATUS.each do |status_string|
     define_singleton_method(status_string) do

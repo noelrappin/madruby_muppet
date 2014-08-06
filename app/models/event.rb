@@ -17,6 +17,8 @@ class Event < ActiveRecord::Base
 
   validates :capacity, numericality: {greater_than: 0}
 
+  delegate :past?, to: :performance_time
+
   def unsold_tickets
     tickets.unsold
   end

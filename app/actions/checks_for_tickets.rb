@@ -11,10 +11,12 @@ class ChecksForTickets
   end
 
   def available?
-    available_tickets > 0
+    reason == :on_sale
   end
 
   def reason
-    :sold_out
+    return :past_event if event.past?
+    return :sold_out if available_tickets <= 0
+    return :on_sale
   end
 end
