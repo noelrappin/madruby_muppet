@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :events
+  resources :shopping_carts, only: [:create]
 
   devise_for :users
   root to: "home#index"

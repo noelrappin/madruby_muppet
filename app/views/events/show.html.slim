@@ -6,6 +6,14 @@ p= @event.performance_time.to_s(:long)
 - if @checker.available?
   #available
     | Tickets Remaining: #{@checker.available_tickets}
+    = form_for ShoppingCart.new(event_id: @event.id) do |f|
+      = f.hidden_field :event_id
+      .field.form-group
+        = f.label :ticket_count, class: "control-label"
+        = f.select :ticket_count, 1 .. @checker.available_tickets
+      .actions.form-group
+        .col-sm-10
+          = f.submit "Add To Cart", class: "btn btn-default"
 - else
   #unavailable
     | No tickets Remaining

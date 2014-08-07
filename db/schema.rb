@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140807133518) do
 
   create_table "tickets", force: true do |t|
     t.integer  "event_id"
+    t.integer  "user_id"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140807133518) do
   end
 
   add_index "tickets", ["event_id"], name: "index_tickets_on_event_id"
+  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -10,11 +10,28 @@ RSpec.describe "checking for availablity" do
           performance_time: 1.month.from_now) }
     let(:event) { creator.create; creator.event }
 
-    scenario "tickets are available" do
+    it "tickets are available" do
       visit event_path(event)
       expect(page).to have_selector("#available", text: "2")
       expect(page).not_to have_selector("#unavailable")
     end
+  end
+
+  describe "add to cart" do
+    let(:creator) { CreatesEvent.new(name: "Today's Event", capacity: 2,
+          performance_time: 1.month.from_now) }
+    let(:event) { creator.create; creator.event }
+    let(:user) { FactoryGirl.create(:user, access_level: "vip") }
+
+    it "can add tickets to cart" do
+      login_as(user, scope: :user)
+      visit event_path(event)
+      select(2, from: "Ticket count")
+      click_on "Add To Cart"
+      expect(page).to have_selector(".in_cart #event_#{event.id}", text: "2")
+    end
+
+
   end
 
   describe "for VIP users" do

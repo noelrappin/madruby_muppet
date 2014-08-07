@@ -1,0 +1,49 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ActiveSupport	test/test_helper.rb	/^class ActiveSupport::TestCase$/;"	c
+AddVipFields	db/migrate/20140807133518_add_vip_fields.rb	/^class AddVipFields < ActiveRecord::Migration$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Muppet
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+ChecksForTickets	app/actions/checks_for_tickets.rb	/^class ChecksForTickets$/;"	c
+CreateEvents	db/migrate/20140723153900_create_events.rb	/^class CreateEvents < ActiveRecord::Migration$/;"	c
+CreateTickets	db/migrate/20140724151645_create_tickets.rb	/^class CreateTickets < ActiveRecord::Migration$/;"	c
+CreatesEvent	app/actions/creates_event.rb	/^class CreatesEvent$/;"	c
+DeviseCreateUsers	db/migrate/20140723142040_devise_create_users.rb	/^class DeviseCreateUsers < ActiveRecord::Migration$/;"	c
+Event	app/models/event.rb	/^class Event < ActiveRecord::Base$/;"	c
+EventsController	app/controllers/events_controller.rb	/^class EventsController < ApplicationController$/;"	c
+EventsHelper	app/helpers/events_helper.rb	/^module EventsHelper$/;"	m
+HomeController	app/controllers/home_controller.rb	/^class HomeController < ApplicationController$/;"	c
+HomeHelper	app/helpers/home_helper.rb	/^module HomeHelper$/;"	m
+Muppet	config/application.rb	/^module Muppet$/;"	m
+Ticket	app/models/ticket.rb	/^class Ticket < ActiveRecord::Base$/;"	c
+User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+all_tickets_accounted_for?	app/actions/checks_for_tickets.rb	/^  def all_tickets_accounted_for?$/;"	f	class:ChecksForTickets
+all_tickets_sold?	app/actions/checks_for_tickets.rb	/^  def all_tickets_sold?$/;"	f	class:ChecksForTickets
+available?	app/actions/checks_for_tickets.rb	/^  def available?$/;"	f	class:ChecksForTickets
+available_tickets	app/actions/checks_for_tickets.rb	/^  def available_tickets$/;"	f	class:ChecksForTickets
+change	db/migrate/20140723142040_devise_create_users.rb	/^  def change$/;"	f	class:DeviseCreateUsers
+change	db/migrate/20140723153900_create_events.rb	/^  def change$/;"	f	class:CreateEvents
+change	db/migrate/20140724151645_create_tickets.rb	/^  def change$/;"	f	class:CreateTickets
+change	db/migrate/20140807133518_add_vip_fields.rb	/^  def change$/;"	f	class:AddVipFields
+create	app/actions/creates_event.rb	/^  def create$/;"	f	class:CreatesEvent
+create	app/controllers/events_controller.rb	/^  def create$/;"	f	class:EventsController
+destroy	app/controllers/events_controller.rb	/^  def destroy$/;"	f	class:EventsController
+edit	app/controllers/events_controller.rb	/^  def edit$/;"	f	class:EventsController
+event_params	app/controllers/events_controller.rb	/^    def event_params$/;"	f	class:EventsController
+index	app/controllers/events_controller.rb	/^  def index$/;"	f	class:EventsController
+index	app/controllers/home_controller.rb	/^  def index$/;"	f	class:HomeController
+initialize	app/actions/checks_for_tickets.rb	/^  def initialize(event, user)$/;"	f	class:ChecksForTickets
+initialize	app/actions/creates_event.rb	/^  def initialize(params)$/;"	f	class:CreatesEvent
+new	app/controllers/events_controller.rb	/^  def new$/;"	f	class:EventsController
+reason	app/actions/checks_for_tickets.rb	/^  def reason$/;"	f	class:ChecksForTickets
+run	app/actions/creates_event.rb	/^  def run$/;"	f	class:CreatesEvent
+save	app/actions/creates_event.rb	/^  def save$/;"	f	class:CreatesEvent
+set_event	app/controllers/events_controller.rb	/^    def set_event$/;"	f	class:EventsController
+show	app/controllers/events_controller.rb	/^  def show$/;"	f	class:EventsController
+stub_ticket_counts	spec/actions/checks_for_tickets_spec.rb	/^  def stub_ticket_counts(event, sold: 0, cart: 0)$/;"	f
+update	app/controllers/events_controller.rb	/^  def update$/;"	f	class:EventsController

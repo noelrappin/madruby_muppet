@@ -26,8 +26,8 @@ class Ticket < ActiveRecord::Base
       status == status_string
     end
 
-    define_method(:"#{status_string}!") do
-      update_attributes(status: status_string)
+    define_method(:"#{status_string}!") do |user_id = nil|
+      update_attributes(status: status_string, user_id: user_id)
     end
   end
 
