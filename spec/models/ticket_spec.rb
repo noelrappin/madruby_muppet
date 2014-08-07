@@ -2,11 +2,12 @@
 #
 # Table name: tickets
 #
-#  id         :integer          not null, primary key
-#  event_id   :integer
-#  status     :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id           :integer          not null, primary key
+#  event_id     :integer
+#  status       :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  access_level :string(255)
 #
 
 require 'rails_helper'

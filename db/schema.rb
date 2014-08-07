@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724151645) do
+ActiveRecord::Schema.define(version: 20140807133518) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140724151645) do
     t.integer  "capacity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "vip_capacity"
   end
 
   create_table "tickets", force: true do |t|
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140724151645) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "access_level"
   end
 
   add_index "tickets", ["event_id"], name: "index_tickets_on_event_id"
@@ -44,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140724151645) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "access_level"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

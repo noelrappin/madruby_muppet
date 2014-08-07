@@ -9,6 +9,7 @@
 #  capacity         :integer
 #  created_at       :datetime
 #  updated_at       :datetime
+#  vip_capacity     :integer
 #
 
 class Event < ActiveRecord::Base
@@ -21,11 +22,19 @@ class Event < ActiveRecord::Base
 
   Ticket::STATUS.each do |status_string|
     define_method :"#{status_string}_tickets" do
-      tickets.send(status_string)
+      tickets.send(status_string).general
     end
 
     define_method :"#{status_string}_ticket_count" do
-      tickets.send(status_string).count
+      tickets.send(status_string).general.count
+    end
+
+    define_method :"#{status_string}_vip_tickets" do
+      tickets.send(status_string).vip
+    end
+
+    define_method :"#{status_string}_vip_ticket_count" do
+      tickets.send(status_string).vip.count
     end
   end
 

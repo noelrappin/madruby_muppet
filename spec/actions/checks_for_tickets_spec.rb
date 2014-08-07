@@ -1,9 +1,6 @@
 require "rails_helper"
 
 RSpec.describe ChecksForTickets do
-  let(:event) { Event.new(name: "Today's Event",
-      capacity: 2, performance_time: 1.month.from_now) }
-  let(:checker) { ChecksForTickets.new(event) }
 
   def stub_ticket_counts(event, sold: 0, cart: 0)
     remaining = event.capacity - sold - cart
@@ -13,6 +10,10 @@ RSpec.describe ChecksForTickets do
   end
 
   describe "basic availability" do
+
+    let(:event) { Event.new(name: "Today's Event",
+        capacity: 2, performance_time: 1.month.from_now) }
+    let(:checker) { ChecksForTickets.new(event) }
 
     it "assumes unsold tickets are available" do
       stub_ticket_counts(event, sold: 0, cart: 0)
@@ -38,6 +39,28 @@ RSpec.describe ChecksForTickets do
       expect(checker).not_to be_available
       expect(checker.reason).to eq :on_hold
     end
+  end
 
+  describe "VIP availability" do
+    let(:event) { Event.new(name: "Today's Event",
+        capacity: 2, vip_capacity: 2,
+        performance_time: 1.month.from_now) }
+    let(:checker) { ChecksForTickets.new(event, user) }
+
+    before do
+      stub_ticket_counts(event, sold: 2, cart: 0)
+      allow(event).to receive(:unsold_vip_ticket_count).and_return(2)
+    end
+
+    describe "with an ordinary user" do
+      let(:user) { FactoryGirl.build_stubbed(:user) }
+      specify { expect(checker).not_to be_available }
+    end
+
+    describe "with a VIP user" do
+      let(:user) { FactoryGirl.build_stubbed(:user, access_level: "vip") }
+      specify { expect(checker).to be_available }
+      specify { expect(checker.available_tickets).to eq(2) }
+    end
   end
 end

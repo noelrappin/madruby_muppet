@@ -9,6 +9,7 @@
 #  capacity         :integer
 #  created_at       :datetime
 #  updated_at       :datetime
+#  vip_capacity     :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

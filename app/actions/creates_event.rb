@@ -10,7 +10,10 @@ class CreatesEvent
   def run
     @event = Event.new(params)
     @event.capacity.times do
-      @event.tickets.build(status: "unsold")
+      @event.tickets.build(status: "unsold", access_level: "general")
+    end
+    (@event.vip_capacity || 0).times do
+      @event.tickets.build(status: "unsold", access_level: "vip")
     end
   end
 

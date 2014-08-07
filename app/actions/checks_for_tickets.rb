@@ -1,13 +1,14 @@
 class ChecksForTickets
 
-  attr_accessor :event
+  attr_accessor :event, :user
 
-  def initialize(event)
+  def initialize(event, user = nil)
     @event = event
+    @user = user
   end
 
   def available_tickets
-    event.unsold_ticket_count
+    event.unsold_ticket_count + (user.try(:vip?) ? event.unsold_vip_ticket_count : 0)
   end
 
   def available?
@@ -15,11 +16,15 @@ class ChecksForTickets
   end
 
   def all_tickets_sold?
-    event.sold_ticket_count >= event.capacity
+    general = event.sold_ticket_count >= event.capacity
+    return general unless general && user && user.vip?
+    event.sold_vip_ticket_count >= event.vip_capacity
   end
 
   def all_tickets_accounted_for?
-    event.sold_ticket_count + event.cart_ticket_count >= event.capacity
+    general = event.sold_ticket_count + event.cart_ticket_count >= event.capacity
+    return general unless general && user && user.vip?
+    event.sold_vip_ticket_count + event.cart_vip_ticket_count >= event.vip_capacity
   end
 
   def reason

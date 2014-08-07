@@ -15,6 +15,7 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  access_level           :string(255)
 #
 
 require 'rails_helper'

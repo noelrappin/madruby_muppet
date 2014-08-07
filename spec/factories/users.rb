@@ -15,11 +15,14 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  access_level           :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
   factory :user do
+    email 'test@example.com'
+    password 'f4k3p455w0rd'
   end
 end
