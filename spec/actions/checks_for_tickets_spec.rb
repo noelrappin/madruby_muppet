@@ -2,11 +2,14 @@ require "rails_helper"
 
 RSpec.describe ChecksForTickets do
 
-  def stub_ticket_counts(event, sold: 0, cart: 0)
-    remaining = event.capacity - sold - cart
-    allow(event).to receive(:sold_ticket_count).and_return(sold)
-    allow(event).to receive(:cart_ticket_count).and_return(cart)
-    allow(event).to receive(:unsold_ticket_count).and_return(remaining)
+  def stub_ticket_counts(event,
+      level: "general", sold: 0, cart: 0, capacity: nil)
+    capacity ||= event.capacity
+    remaining = capacity - sold - cart
+    stub_bank = double(sold_ticket_count: sold,
+        cart_ticket_count: cart, unsold_ticket_count: remaining,
+        capacity: capacity)
+    allow(event).to receive(:ticket_bank_for).with(level).and_return(stub_bank)
   end
 
   describe "basic availability" do
@@ -48,8 +51,8 @@ RSpec.describe ChecksForTickets do
     let(:checker) { ChecksForTickets.new(event, user) }
 
     before do
-      stub_ticket_counts(event, sold: 2, cart: 0)
-      allow(event).to receive(:unsold_vip_ticket_count).and_return(2)
+      stub_ticket_counts(event, sold: 2, cart: 0, level: "general", capacity: 2)
+      stub_ticket_counts(event, sold: 2, cart: 0, level: "vip", capacity: 4)
     end
 
     describe "with an ordinary user" do

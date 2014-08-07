@@ -18,7 +18,7 @@ table.table.table-striped
         td.description = event.description
         td.performance_time = event.performance_time.to_s(:long)
         td.capacity = event.capacity
-        td.unsold_ticket_count = event.unsold_tickets.count
+        td.unsold_ticket_count = event.ticket_bank_for("general").unsold_ticket_count
         td
           = link_to 'Show', event
           | |

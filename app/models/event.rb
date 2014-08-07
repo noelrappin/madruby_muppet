@@ -20,22 +20,16 @@ class Event < ActiveRecord::Base
 
   delegate :past?, to: :performance_time
 
-  Ticket::STATUS.each do |status_string|
-    define_method :"#{status_string}_tickets" do
-      tickets.send(status_string).general
-    end
+  def general_ticket_bank
+    TicketBank.new(self, tickets.general)
+  end
 
-    define_method :"#{status_string}_ticket_count" do
-      tickets.send(status_string).general.count
-    end
+  def vip_ticket_bank
+    TicketBank.new(self, tickets.general + tickets.vip)
+  end
 
-    define_method :"#{status_string}_vip_tickets" do
-      tickets.send(status_string).vip
-    end
-
-    define_method :"#{status_string}_vip_ticket_count" do
-      tickets.send(status_string).vip.count
-    end
+  def ticket_bank_for(access_type)
+    send(:"#{access_type}_ticket_bank")
   end
 
 end

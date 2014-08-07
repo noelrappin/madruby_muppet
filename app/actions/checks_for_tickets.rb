@@ -7,8 +7,16 @@ class ChecksForTickets
     @user = user
   end
 
+  def access_level
+    @user.try(:access_level) || "general"
+  end
+
+  def ticket_bank
+    @ticket_bank ||= event.ticket_bank_for(access_level)
+  end
+
   def available_tickets
-    event.unsold_ticket_count + (user.try(:vip?) ? event.unsold_vip_ticket_count : 0)
+    ticket_bank.unsold_ticket_count
   end
 
   def available?
@@ -16,15 +24,11 @@ class ChecksForTickets
   end
 
   def all_tickets_sold?
-    general = event.sold_ticket_count >= event.capacity
-    return general unless general && user && user.vip?
-    event.sold_vip_ticket_count >= event.vip_capacity
+    ticket_bank.sold_ticket_count >= ticket_bank.capacity
   end
 
   def all_tickets_accounted_for?
-    general = event.sold_ticket_count + event.cart_ticket_count >= event.capacity
-    return general unless general && user && user.vip?
-    event.sold_vip_ticket_count + event.cart_vip_ticket_count >= event.vip_capacity
+    general = ticket_bank.sold_ticket_count + ticket_bank.cart_ticket_count >= ticket_bank.capacity
   end
 
   def reason
