@@ -30,8 +30,6 @@ RSpec.describe "checking for availablity" do
       click_on "Add To Cart"
       expect(page).to have_selector(".in_cart #event_#{event.id}", text: "2")
     end
-
-
   end
 
   describe "for VIP users" do
