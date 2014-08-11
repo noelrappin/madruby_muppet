@@ -19,11 +19,11 @@ CreatesEvent.new(name: "Kristin Chenoweth",
     capacity: 250).create
 
 CreatesEvent.new(name: "Weird Al Yankovic",
-    description: "Weird Al Yankovic (Manditory Fun) sings his way through the Muppet Show",
+    description: "Weird Al Yankovic (Mandatory Fun) sings his way through the Muppet Show",
     performance_time: "October 18, 2014",
     capacity: 250).create
 
-CreatesEvent.new(name: "Lady Gaga",
-    description: "Lady Gaga becomes an honorary Muppet",
+CreatesEvent.new(name: "",
+    description: "",
     performance_time: "October 25, 2014",
     capacity: 250).create

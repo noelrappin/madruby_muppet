@@ -1,7 +1,20 @@
-h1= @event.name
+.row
+  .col-md-3
+    = link_to root_path do
+      = image_tag("logo.jpg", size: "192x105", align: "left")
+  .col-md-9
+    h1.title The Muppet Theater
 
-p= @event.description
-p= @event.performance_time.to_s(:long)
+.row
+  .col-md-6
+    h1.title= link_to(@event.name, @event)
+.row
+  .col-md-6
+    = image_tag(@event.name.parameterize.downcase + ".jpg", height: "300", align: "left")
+  .col-md-6
+    .= @event.performance_time.to_date.to_s(:long)
+    = @event.description
+
 
 / - if @checker.available?
 /   #available
