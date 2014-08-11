@@ -1,3 +1,22 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container {
+  margin-left: 10px !important;
+}
+
+h1.title {
+  font-size: 3em;
+  font-family: 'Jacques Francois', serif;
+  font-weight: bold;
+  color: green;
+}
+
+a:visited {
+  color: green !important;
+}
+
+a {
+  color: green !important;
+}
