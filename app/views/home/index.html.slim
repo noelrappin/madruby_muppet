@@ -1,1 +1,26 @@
-h1 Welcome to the Muppet Theater
+.row
+  .col-md-3
+    = image_tag("logo.jpg", size: "192x105", align: "left")
+  .col-md-9
+    h1.title The Muppet Theater
+
+- @events.each_slice(2) do |left, right|
+  .row
+    .col-md-6
+      h1.title= link_to(left.name, left)
+      .row
+        .col-md-3
+          = image_tag(left.name.parameterize.downcase + ".jpg", height: "150", align: "left")
+        .col-md-9
+          .= left.performance_time.to_date.to_s(:long)
+          = left.description
+
+    .col-md-6
+      h1.title= link_to(right.name, right)
+      .row
+        .col-md-9
+          .= right.performance_time.to_date.to_s(:long)
+          = right.description
+        .col-md-3
+          = image_tag(right.name.parameterize.downcase + ".jpg", height: "150", align: "left")
+
